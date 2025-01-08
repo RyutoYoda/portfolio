@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tech Portfolio</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #2c2c2c;
+            color: #f4f4f4;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        header nav a {
+            color: #4a90e2;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+
+        .intro {
+            text-align: center;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .project {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skills li {
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2c2c2c;
+            color: #f4f4f4;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Tech Portfolio</h1>
+        <img src="スクリーンショット 2025-01-02 22.22.57.png" alt="プロフィール画像" style="width: 150px; height: 150px; border-radius: 50%; margin: 1rem auto; display: block;">
+        <nav>
+            <a href="#about">自己紹介</a>
+            <a href="#projects">実績</a>
+            <a href="#skills">スキル</a>
+            <a href="#contact">お問い合わせ</a>
+        </nav>
+    </header>
+
+    <section id="about" class="intro">
+        <h2>自己紹介</h2>
+        <p>こんにちは！データエンジニアのRyuto Yodaです。データ分析基盤構築やAI予測モデル構築の経験を活かし、革新的なソリューションを提供しています。</p>
+    </section>
+
+    <section id="projects">
+        <h2>実績</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>データ分析基盤構築</h3>
+                <p>Snowflake、Google Cloud、Databricksを使用して大規模データ基盤を構築し、効率的なデータ分析を可能にしました。</p>
+            </div>
+            <div class="project">
+                <h3>AI予測モデル構築</h3>
+                <p>PythonとSQLを活用し、AI予測モデルを構築。ビジネスの意思決定を強化するシステムを開発しました。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>スキル</h2>
+        <ul class="skills">
+            <li>Python</li>
+            <li>Go</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>SQL</li>
+            <li>Snowflake</li>
+            <li>Google Cloud</li>
+            <li>Databricks</li>
+            <li>dbt</li>
+            <li>AWS</li>
+            <li>Terraform</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>お問い合わせ</h2>
+        <p>ご連絡は以下の方法でどうぞ：</p>
+        <p>Email: <a href="mailto:ryutoyoda.s@gmail.com">ryutoyoda.s@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/ryuto-yoda-b1450b273/?originalSubdomain=jp" target="_blank">https://www.linkedin.com/in/ryuto-yoda-b1450b273/?originalSubdomain=jp</a></p>
+        <p>X (Twitter): <a href="https://x.com/Ooolong29" target="_blank">https://x.com/Ooolong29</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Ryuto Yoda. All rights reserved.</p>
+    </footer>
+</body>
+</html>
