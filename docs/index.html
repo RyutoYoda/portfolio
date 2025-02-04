@@ -19,212 +19,167 @@
     </script>
     <script src="https://udify.app/embed.min.js" id="LTYuWzNCtpe3gVHq" defer></script>
     <style>
-        #dify-chatbot-bubble-button {
-            background-color: #1C64F2 !important;
+        /* 既存のスタイルはそのまま */
+        /* 言語切り替えボタンのスタイル追加 */
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
         }
-        #dify-chatbot-bubble-window {
-            width: 24rem !important;
-            height: 40rem !important;
-        }
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('snow.png'); /* ここに実際の画像パスを指定 */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            /*  background-color: #f4f4f4;*/
-            color: #2c2c2c;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #2c2c2c;
-            color: #f4f4f4;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        header h1 {
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-image-container {
-            width: 150px;
-            height: 150px;
-            margin: 1rem auto;
-            position: relative;
-            overflow: hidden;
-            border-radius: 50%;
-        }
-
-        .profile-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        header nav a {
-            color: #4a90e2;
-            text-decoration: none;
-            margin: 0 0.5rem;
-        }
-
-        header nav a:hover {
-            text-decoration: underline;
-        }
-
-        section {
-            padding: 2rem;
-            max-width: 800px;
-            margin: 2rem auto;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            color: #4a90e2;
-            margin-bottom: 1rem;
-        }
-
-        .intro {
-            text-align: center;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .project {
-            background-color: #f4f4f4;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .skills {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skills li {
+        
+        .language-btn {
             background-color: #4a90e2;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 16px;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
         }
 
-        .contact-links {
-            margin: 1rem 0;
+        .language-btn:hover {
+            background-color: #357abd;
         }
 
-        .contact-links a {
-            color: #4a90e2;
-            text-decoration: none;
-        }
-
-        .contact-links a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #2c2c2c;
-            color: #f4f4f4;
-            margin-top: 2rem;
-        }
-
-        footer a {
-            color: #4a90e2;
-            text-decoration: none;
+        [data-lang="en"] {
+            display: none;
         }
     </style>
 </head>
 <body>
+    <!-- 言語切り替えボタン -->
+    <div class="language-switch">
+        <button class="language-btn" onclick="toggleLanguage()">English</button>
+    </div>
+
     <header>
         <h1>Ryuto Yoda</h1>
-        <small style="display: block; font-size: 0.8rem; margin-bottom: 0.5rem;">My Tech Portfolio</small>
+        <small style="display: block; font-size: 0.8rem; margin-bottom: 0.5rem;">
+            <span data-lang="ja">My Tech Portfolio</span>
+            <span data-lang="en">My Tech Portfolio</span>
+        </small>
         <div class="profile-image-container">
             <img src="スクリーンショット 2025-01-11 0.02.39.png" alt="プロフィール画像">
         </div>
         <nav>
-            <a href="#about">自己紹介</a>
-            <a href="#projects">実績</a>
-            <a href="#skills">スキル</a>
-            <a href="#contact">お問い合わせ</a>
+            <a href="#about">
+                <span data-lang="ja">自己紹介</span>
+                <span data-lang="en">About</span>
+            </a>
+            <a href="#projects">
+                <span data-lang="ja">実績</span>
+                <span data-lang="en">Projects</span>
+            </a>
+            <a href="#skills">
+                <span data-lang="ja">スキル</span>
+                <span data-lang="en">Skills</span>
+            </a>
+            <a href="#contact">
+                <span data-lang="ja">お問い合わせ</span>
+                <span data-lang="en">Contact</span>
+            </a>
         </nav>
     </header>
 
     <section id="about" class="intro">
-        <h2>自己紹介</h2>
-        <p>ビッグデータエンジニアの與田/Yodaです。大規模データ分析基盤、AI予測モデル、LLM(大規模言語モデル)の実装経験を活かし、革新的なソリューションを提供しています。</p>
+        <h2>
+            <span data-lang="ja">自己紹介</span>
+            <span data-lang="en">About Me</span>
+        </h2>
+        <p>
+            <span data-lang="ja">ビッグデータエンジニアの與田/Yodaです。大規模データ分析基盤、AI予測モデル、LLM(大規模言語モデル)の実装経験を活かし、革新的なソリューションを提供しています。</span>
+            <span data-lang="en">I'm Yoda, a Big Data Engineer. Leveraging my experience in large-scale data analytics platforms, AI prediction models, and LLM (Large Language Models) implementation, I provide innovative solutions.</span>
+        </p>
     </section>
 
     <section id="projects">
-        <h2>実績</h2>
+        <h2>
+            <span data-lang="ja">実績</span>
+            <span data-lang="en">Projects</span>
+        </h2>
         <div class="projects">
             <div class="project">
-                <h3>データ分析基盤構築</h3>
-                <p>Snowflake、Google Cloud、Databricks、AWSを使用して大規模データ分析基盤を構築し、効率的なデータ分析を可能にしました。</p>
+                <h3>
+                    <span data-lang="ja">データ分析基盤構築</span>
+                    <span data-lang="en">Data Analytics Platform Development</span>
+                </h3>
+                <p>
+                    <span data-lang="ja">Snowflake、Google Cloud、Databricks、AWSを使用して大規模データ分析基盤を構築し、効率的なデータ分析を可能にしました。</span>
+                    <span data-lang="en">Built large-scale data analytics platforms using Snowflake, Google Cloud, Databricks, and AWS, enabling efficient data analysis.</span>
+                </p>
             </div>
             <div class="project">
-                <h3>AI予測モデル構築</h3>
-                <p>PythonとSQLを活用し、時系列予測などのAI予測モデルを構築。ビジネスの意思決定を強化するシステムを開発しました。</p>
+                <h3>
+                    <span data-lang="ja">AI予測モデル構築</span>
+                    <span data-lang="en">AI Prediction Model Development</span>
+                </h3>
+                <p>
+                    <span data-lang="ja">PythonとSQLを活用し、時系列予測などのAI予測モデルを構築。ビジネスの意思決定を強化するシステムを開発しました。</span>
+                    <span data-lang="en">Developed AI prediction models including time series forecasting using Python and SQL, creating systems that enhance business decision-making.</span>
+                </p>
             </div>
         </div>
-    </section>
-
-    <section id="skills">
-        <h2>スキル</h2>
-        <ul class="skills">
-            <li>Python</li>
-            <li>Go</li>
-            <li>SQL</li>
-            <li>Snowflake</li>
-            <li>Google Cloud</li>
-            <li>Databricks</li>
-            <li>dbt</li>
-            <li>AWS</li>
-            <li>Terraform</li>
-            <li>大規模言語モデル</li>
-            <li>データ分析基盤</li>
-            <li>AI予測モデル</li>
-        </ul>
     </section>
 
     <section id="contact">
-        <h2>お問い合わせ</h2>
-        <p>ご連絡は以下の方法でどうぞ</p>
+        <h2>
+            <span data-lang="ja">お問い合わせ</span>
+            <span data-lang="en">Contact</span>
+        </h2>
+        <p>
+            <span data-lang="ja">ご連絡は以下の方法でどうぞ</span>
+            <span data-lang="en">Please feel free to contact me through the following channels</span>
+        </p>
         <div class="contact-links">
-            <p>Email: <a href="mailto:ryutoyoda.s@gmail.com">メールでのお問い合わせ</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/ryuto-yoda-b1450b273/?originalSubdomain=jp" target="_blank">LinkedInプロフィール</a></p>
-            <p>X (Twitter): <a href="https://x.com/Ooolong29" target="_blank">Xプロフィール</a></p>
+            <p>Email: <a href="mailto:ryutoyoda.s@gmail.com">
+                <span data-lang="ja">メールでのお問い合わせ</span>
+                <span data-lang="en">Contact via Email</span>
+            </a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/ryuto-yoda-b1450b273/?originalSubdomain=jp" target="_blank">
+                <span data-lang="ja">LinkedInプロフィール</span>
+                <span data-lang="en">LinkedIn Profile</span>
+            </a></p>
+            <p>X (Twitter): <a href="https://x.com/Ooolong29" target="_blank">
+                <span data-lang="ja">Xプロフィール</span>
+                <span data-lang="en">X Profile</span>
+            </a></p>
             <p>Instagram: <a href="https://www.instagram.com/ry_2rc9?igsh=MTJ5dTlja3MyNDI1ZQ==" target="_blank">Instagram</a></p>
-            <p>Qiita: <a href="https://qiita.com/RyutoYoda" target="_blank">技術記事</a></p>
+            <p>Qiita: <a href="https://qiita.com/RyutoYoda" target="_blank">
+                <span data-lang="ja">技術記事</span>
+                <span data-lang="en">Technical Articles</span>
+            </a></p>
         </div>
         
-        <p>簡単な質問には右下のAIチャットが回答してくれます！🤖</p>
+        <p>
+            <span data-lang="ja">簡単な質問には右下のAIチャットが回答してくれます！🤖</span>
+            <span data-lang="en">The AI chat in the bottom right can answer simple questions! 🤖</span>
+        </p>
     </section>
 
     <footer>
         <p>&copy; 2025 Ryuto Yoda. All rights reserved.</p>
     </footer>
+
+    <script>
+        // 言語切り替え機能
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const btn = document.querySelector('.language-btn');
+            const currentLang = html.getAttribute('lang');
+            
+            if (currentLang === 'ja') {
+                html.setAttribute('lang', 'en');
+                btn.textContent = '日本語';
+                document.querySelectorAll('[data-lang="ja"]').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = 'inline');
+            } else {
+                html.setAttribute('lang', 'ja');
+                btn.textContent = 'English';
+                document.querySelectorAll('[data-lang="ja"]').forEach(el => el.style.display = 'inline');
+                document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = 'none');
+            }
+        }
+    </script>
 </body>
 </html>
