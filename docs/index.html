@@ -111,7 +111,7 @@
         }
 
         body {
-            font-family: 'Comic Sans MS', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, 'メイリオ', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #E6F3FF 0%, #B8E0FF 50%, #87CEEB 100%);
             background-image: 
                 radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
@@ -447,21 +447,128 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .lang-switch {
+                top: 10px;
+                right: 10px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
             .projects {
                 grid-template-columns: 1fr;
             }
             
             section {
                 padding: 1.5rem;
-                margin: 1rem;
+                margin: 1rem 0.5rem;
+            }
+            
+            header {
+                padding: 1.5rem 1rem;
             }
             
             header h1 {
                 font-size: 2rem;
             }
+
+            .profile-image-container {
+                width: 120px;
+                height: 120px;
+                margin: 1rem auto;
+            }
+
+            header nav a {
+                margin: 0 0.5rem;
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+
+            .intro p {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .project {
+                padding: 1.5rem;
+            }
+
+            .project h3 {
+                font-size: 1.1rem;
+            }
+
+            .project p {
+                font-size: 0.95rem;
+            }
             
             .skills {
                 justify-content: center;
+                gap: 0.6rem;
+            }
+
+            .skills li {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .contact-links p {
+                font-size: 1rem;
+                margin: 0.6rem 0;
+            }
+
+            footer {
+                padding: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Reduce snowflake density on mobile */
+            .snowflake {
+                font-size: 12px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 1rem;
+                margin: 0.8rem 0.3rem;
+            }
+
+            header nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.3rem;
+            }
+
+            header nav a {
+                margin: 0.2rem;
+                padding: 5px 10px;
+                font-size: 0.85rem;
+            }
+
+            .projects {
+                gap: 1rem;
+            }
+
+            .project {
+                padding: 1.2rem;
+            }
+
+            .skills li {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -574,7 +681,13 @@
         }
 
         // Create snowflakes periodically
-        setInterval(createSnowflake, 300);
+        function createSnowflakeInterval() {
+            const isMobile = window.innerWidth <= 768;
+            const interval = isMobile ? 600 : 300; // Less frequent on mobile
+            setInterval(createSnowflake, interval);
+        }
+
+        createSnowflakeInterval();
     </script>
 </body>
 </html>
