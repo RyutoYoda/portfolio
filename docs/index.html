@@ -334,9 +334,41 @@
             line-height: 1.6;
         }
 
+        /* 動画コンテナのスタイル */
         .video-container {
             width: 100%;
-            margin-top: 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 
+                0 15px 40px rgba(135, 206, 250, 0.2),
+                0 8px 20px rgba(0, 0, 0, 0.1);
+            background: #000;
+            position: relative;
+        }
+
+        .demo-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+            background: #000;
+        }
+
+        /* 動画読み込み中の表示 */
+        .video-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-size: 1.1rem;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .skills {
@@ -517,6 +549,10 @@
                 font-size: 0.9rem;
             }
 
+            .video-container {
+                margin: 1.5rem 0;
+            }
+
             /* Reduce snowflake density on mobile */
             .snowflake {
                 font-size: 12px !important;
@@ -565,6 +601,10 @@
             header h1 {
                 font-size: 1.8rem;
             }
+
+            .video-container {
+                margin: 1rem 0;
+            }
         }
     </style>
 </head>
@@ -611,9 +651,22 @@
             <h3 data-en="Vizzy - Natural Language Analytics System" data-ja="Vizzy（自然言語分析システム）">Vizzy（自然言語分析システム）</h3>
             <p data-en="A powerful natural language processing system that transforms complex data queries into intuitive, conversational interactions. Experience the future of data analytics where you can simply ask questions in plain language and get instant insights." data-ja="複雑なデータクエリを直感的な会話形式のやり取りに変換する強力な自然言語処理システムです。自然な言葉で質問するだけで、即座に洞察を得ることができるデータ分析の未来を体験してください。">複雑なデータクエリを直感的な会話形式のやり取りに変換する強力な自然言語処理システムです。自然な言葉で質問するだけで、即座に洞察を得ることができるデータ分析の未来を体験してください。</p>
         </div>
-        <!-- 動画埋め込み用エリア -->
+        <!-- 動画埋め込みエリア（自動再生版） -->
         <div class="video-container">
-            <p data-en="Demo video will be embedded here" data-ja="デモ動画がここに埋め込まれます" style="text-align: center; color: #666; padding: 2rem; background: #f8f9fa; border-radius: 10px; border: 2px dashed #ddd;">デモ動画がここに埋め込まれます</p>
+            <div class="video-loading" id="videoLoading">動画を読み込み中...</div>
+            <video 
+                class="demo-video" 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                preload="auto"
+                onloadstart="hideLoading()"
+                oncanplay="hideLoading()"
+                onerror="showError()">
+                <source src="app_demo.mp4" type="video/mp4">
+                お使いのブラウザは動画再生に対応していません。
+            </video>
         </div>
     </section>
 
@@ -669,6 +722,23 @@
             currentLang = newLang;
         }
 
+        // 動画関連の関数
+        function hideLoading() {
+            const loading = document.getElementById('videoLoading');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }
+
+        function showError() {
+            const loading = document.getElementById('videoLoading');
+            if (loading) {
+                loading.innerHTML = '動画ファイルが見つかりません<br><small>demo-video.mp4ファイルをアップロードしてください</small>';
+                loading.style.display = 'block';
+                loading.style.color = '#e74c3c';
+            }
+        }
+
         // Create snowflakes
         function createSnowflake() {
             const snowflake = document.createElement('div');
@@ -694,6 +764,19 @@
         }
 
         createSnowflakeInterval();
+
+        // 動画の自動再生を確実にするための処理
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.demo-video');
+            if (video) {
+                // ページがロードされたら動画を再生開始
+                video.play().catch(function(error) {
+                    console.log('Auto-play was prevented:', error);
+                    // 自動再生が阻止された場合の処理
+                    showError();
+                });
+            }
+        });
     </script>
 </body>
 </html>
