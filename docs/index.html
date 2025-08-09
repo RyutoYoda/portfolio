@@ -334,12 +334,8 @@
             line-height: 1.6;
         }
 
-        .solution-embed {
+        .video-container {
             width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(135, 206, 250, 0.2);
             margin-top: 1rem;
         }
 
@@ -500,10 +496,6 @@
             .project p {
                 font-size: 0.95rem;
             }
-
-            .solution-embed {
-                height: 500px;
-            }
             
             .skills {
                 justify-content: center;
@@ -539,15 +531,18 @@
 
             header nav {
                 display: flex;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
                 justify-content: center;
-                gap: 0.3rem;
+                gap: 0.2rem;
+                overflow-x: auto;
             }
 
             header nav a {
-                margin: 0.2rem;
-                padding: 5px 10px;
-                font-size: 0.85rem;
+                margin: 0.1rem;
+                padding: 4px 8px;
+                font-size: 0.75rem;
+                white-space: nowrap;
+                flex-shrink: 0;
             }
 
             .projects {
@@ -556,10 +551,6 @@
 
             .project {
                 padding: 1.2rem;
-            }
-
-            .solution-embed {
-                height: 400px;
             }
 
             .skills li {
@@ -620,11 +611,10 @@
             <h3 data-en="Vizzy - Natural Language Analytics System" data-ja="Vizzy（自然言語分析システム）">Vizzy（自然言語分析システム）</h3>
             <p data-en="A powerful natural language processing system that transforms complex data queries into intuitive, conversational interactions. Experience the future of data analytics where you can simply ask questions in plain language and get instant insights." data-ja="複雑なデータクエリを直感的な会話形式のやり取りに変換する強力な自然言語処理システムです。自然な言葉で質問するだけで、即座に洞察を得ることができるデータ分析の未来を体験してください。">複雑なデータクエリを直感的な会話形式のやり取りに変換する強力な自然言語処理システムです。自然な言葉で質問するだけで、即座に洞察を得ることができるデータ分析の未来を体験してください。</p>
         </div>
-        <iframe 
-            src="https://simpletext2sqlv02.streamlit.app/?embed=true" 
-            class="solution-embed"
-            title="Vizzy - Natural Language Analytics System">
-        </iframe>
+        <!-- 動画埋め込み用エリア -->
+        <div class="video-container">
+            <p data-en="Demo video will be embedded here" data-ja="デモ動画がここに埋め込まれます" style="text-align: center; color: #666; padding: 2rem; background: #f8f9fa; border-radius: 10px; border: 2px dashed #ddd;">デモ動画がここに埋め込まれます</p>
+        </div>
     </section>
 
     <section id="skills">
