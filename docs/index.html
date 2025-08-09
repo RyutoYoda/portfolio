@@ -334,6 +334,15 @@
             line-height: 1.6;
         }
 
+        .solution-embed {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(135, 206, 250, 0.2);
+            margin-top: 1rem;
+        }
+
         .skills {
             list-style: none;
             display: flex;
@@ -491,6 +500,10 @@
             .project p {
                 font-size: 0.95rem;
             }
+
+            .solution-embed {
+                height: 500px;
+            }
             
             .skills {
                 justify-content: center;
@@ -545,6 +558,10 @@
                 padding: 1.2rem;
             }
 
+            .solution-embed {
+                height: 400px;
+            }
+
             .skills li {
                 padding: 0.5rem 1rem;
                 font-size: 0.85rem;
@@ -572,6 +589,7 @@
         <nav>
             <a href="#about" data-en="About" data-ja="自己紹介">自己紹介</a>
             <a href="#projects" data-en="Projects" data-ja="経験">経験</a>
+            <a href="#solutions" data-en="Solutions" data-ja="ソリューション">ソリューション</a>
             <a href="#skills" data-en="Skills" data-ja="スキル">スキル</a>
             <a href="#contact" data-en="Contact" data-ja="お問い合わせ">お問い合わせ</a>
         </nav>
@@ -594,6 +612,19 @@
                 <p data-en="Developed AI prediction models including time series forecasting using Python and SQL, creating systems to enhance business decision-making." data-ja="PythonとSQLを活用し、時系列予測などのAI予測モデルを構築。ビジネスの意思決定を強化するシステムを開発しました。">PythonとSQLを活用し、時系列予測などのAI予測モデルを構築。多方面でのビジネス意思決定を強化するシステムを開発しました。</p>
             </div>
         </div>
+    </section>
+
+    <section id="solutions">
+        <h2 data-en="Solutions" data-ja="ソリューション">ソリューション</h2>
+        <div class="intro">
+            <h3 data-en="Vizzy - Natural Language Analytics System" data-ja="Vizzy（自然言語分析システム）">Vizzy（自然言語分析システム）</h3>
+            <p data-en="A powerful natural language processing system that transforms complex data queries into intuitive, conversational interactions. Experience the future of data analytics where you can simply ask questions in plain language and get instant insights." data-ja="複雑なデータクエリを直感的な会話形式のやり取りに変換する強力な自然言語処理システムです。自然な言葉で質問するだけで、即座に洞察を得ることができるデータ分析の未来を体験してください。">複雑なデータクエリを直感的な会話形式のやり取りに変換する強力な自然言語処理システムです。自然な言葉で質問するだけで、即座に洞察を得ることができるデータ分析の未来を体験してください。</p>
+        </div>
+        <iframe 
+            src="https://simpletext2sqlv02.streamlit.app/?embed=true" 
+            class="solution-embed"
+            title="Vizzy - Natural Language Analytics System">
+        </iframe>
     </section>
 
     <section id="skills">
